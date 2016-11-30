@@ -1,0 +1,31 @@
+	<div class="ui text container">
+		
+		<div class="ui segment form">
+			<div class="ui fluid action input">
+				<input type="text" name="title" placeholder="Name for kind?" (keyup.enter)="createDep(depInput.value); depInput.value = ''" #depInput>
+				<button type="button" class="ui primary button" (click)="createDep(depInput.value); depInput.value = ''">Add</button>
+			</div>
+		</div>
+		<div class="ui raised segment">
+			<div class="ui middle divided selection list">
+				<div class="item" *ngFor="let department of depList">
+					<div class="right floated content">
+						<button class="ui blue icon button" type="button">
+							<i class="edit outline icon"></i>
+						</button>
+						<button class="ui red icon button" type="button">
+							<i class="trash outline icon"></i>
+						</button>
+					</div>
+					<div class="content">
+						<div class="header">
+							{{ department }}
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</div>
