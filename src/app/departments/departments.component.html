@@ -3,29 +3,34 @@
 		<div class="ui segment form">
 			<div class="ui fluid action input">
 				<input type="text" name="title" placeholder="Name for kind?" (keyup.enter)="createDep(depInput.value); depInput.value = ''" #depInput>
-				<button type="button" class="ui primary button" (click)="createDep(depInput.value); depInput.value = ''">Add</button>
+				<button type="button" class="ui primary button" (click)="addDep(depInput.value); depInput.value = ''">Add</button>
 			</div>
 		</div>
-		<div class="ui raised segment">
+		<div class="ui raised segment" *ngIf="departaments.length">
 			<div class="ui middle divided selection list">
-				<div class="item" *ngFor="let department of depList">
+				<div class="item" *ngFor="let department of departaments">
 					<div class="right floated content">
-						<button class="ui blue icon button" type="button">
+						<button class="ui blue icon button" type="button" (click)="editDep(department.id,department.name)">
 							<i class="edit outline icon"></i>
 						</button>
-						<button class="ui red icon button" type="button">
+						<button class="ui red icon button" type="button" (click)="delDep(department.id)">
 							<i class="trash outline icon"></i>
-						</button>
+						</button> 
 					</div>
 					<div class="content">
 						<div class="header">
-							{{ department }}
+							<span *ngIf="editid !== department.id">{{ department.name }}</span>
+							<input [(ngModel)]="department.name" *ngIf="editid === department.id"/>
+
+							<i (click)="editDep(-1)" *ngIf="editid === department.id" class="checkmark green icon"></i>
+							<i (click)="department.name = editname; editDep(-1)" *ngIf="editid === department.id" class="remove red icon"></i>
+							
+
+
 						</div>
 					</div>
 				</div>
-				
 			</div>
-			
 		</div>
 		
 	</div>

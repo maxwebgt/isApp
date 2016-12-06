@@ -1,26 +1,23 @@
 <div class="ui text container">
 		<div class="ui raised segment">
 			<div class="ui middle aligned divided selection list">
-				<div class="item">
+				
+				<div class="item" *ngFor="let stuff of stuffes">
 					<div class="right floated content">
-						<button class="ui blue icon button" type="button"><i class="edit outline icon"></i></button> <button class="ui red icon button" type="button"><i class="trash outline icon"></i></button>
+						<button class="ui blue icon button" type="button">
+							<i class="edit outline icon"></i>
+							</button> 
+						<button class="ui red icon button" type="button" (click)="delStuff(stuff.id)">
+							<i class="trash outline icon"></i>
+						</button>
 					</div><img class="ui avatar image" src="/images/christian.jpg">
 					<div class="content">
 						<div class="header">
-							Akella Dmitrievna Novgorodskaya
-						</div>sales
+							{{ stuff.firstname }} {{ stuff.lastname }} Age: {{ stuff.age }}
+						</div>{{ stuff.department }}
 					</div>
 				</div>
-				<div class="item">
-					<div class="right floated content">
-						<button class="ui blue icon button" type="button"><i class="edit outline icon"></i></button> <button class="ui red icon button" type="button"><i class="trash outline icon"></i></button>
-					</div><img class="ui avatar image" src="/images/christian.jpg">
-					<div class="content">
-						<div class="header">
-							Mark Alexanrovich Polyakov
-						</div>developer
-					</div>
-				</div>
+				
 			</div>
 			<div class="ui horizontal divider">
 				Or
@@ -36,25 +33,23 @@
 			<form class="ui form">
 			  <div class="field">
 				<label>First Name</label>
-				<input type="text" name="first-name" placeholder="First Name">
+				<input type="text" name="first-name" placeholder="First Name" #firstname>
 			  </div>
 			  <div class="field">
 				<label>Last Name</label>
-				<input type="text" name="last-name" placeholder="Last Name">
+				<input type="text" name="last-name" placeholder="Last Name" #lastname>
 			  </div>
 			  <div class="field">
 				<label>Age</label>
-				<input type="text" name="last-name" placeholder="Age">
+				<input type="text" name="last-name" placeholder="Age" #age>
 			  </div>
-			  <div class="field">
+			  <div class="field" *ngIf="departaments.length">
 				<label>State</label>
-					<select class="ui fluid dropdown">
-						<option value="">State</option>
-						<option value="AL">Alabama</option>
-						<option value="AK">Alaska</option>
+					<select class="ui fluid dropdown" (change)="ziga(department.value)" #department>
+							<option *ngFor="let department of departaments" value="{{department.name}}">{{department.name}}</option>
 					</select>
 				</div>
-			  <button class="ui button" type="submit">Submit</button>
+			  <button class="ui button" type="submit" (click)="addStuff(firstname.value,lastname.value,age.value,department.value)">Submit</button>
 			</form>
 		</div>
 	</div>

@@ -1,20 +1,25 @@
-<!--
+
 	<nav class="ui attached menu">
 		<div class="ui container">
-			<div class="header item">
+			<!--<div class="header item">
 				<h3><i class="diamond icon"></i>Home</h3>
+			</div>-->
+			<div class="header item">				
+				<a routerLink="/personal" routerLinkActive="active"><h3><i class="users icon"></i>Personal</h3></a>
 			</div>
 			<div class="header item">
-				<h3><i class="users icon"></i>Personal</h3>
-			</div>
-			<div class="header item">
-				<h3><i class="travel icon"></i>Parts</h3>
+				
+				<a routerLink="/departament" routerLinkActive="active"><h3><i class="travel icon"></i>Department</h3></a>
 			</div>
 		</div>
 	</nav>
--->
-<!--	<app-personals></app-personals>-->
-	<app-departments></app-departments>
+	<router-outlet></router-outlet>
+	
+
+
+
+	<!--<app-personals></app-personals>
+	<app-departments></app-departments>-->
 
 
 
