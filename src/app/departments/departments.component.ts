@@ -40,10 +40,6 @@ export class DepartmentsComponent implements OnInit {
   delDep(id: number): void {
      this.departaments = this.depService.delete(id);
      this.personals = this.persService.updPersDepoAll(id, 0);
-    //  this.personals.filter(function(element) {
-
-
-    // })
      console.log();
   }
   editDep(id: number, name: string) {

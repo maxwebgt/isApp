@@ -7,7 +7,7 @@ import { PERSONALS } from './personals.data';
 export class PersService {
 
   getPers(): Personal[] {
-      
+
     return PERSONALS;
   };
 
@@ -23,7 +23,7 @@ export class PersService {
 
   //   });
   //   return PERSONALS;
-  // } ; 
+  // } ;
 
 updPersDepoAll(oldid: number, newid: number) {
   PERSONALS.filter(function(element) {
@@ -36,30 +36,28 @@ updPersDepoAll(oldid: number, newid: number) {
 }
 
 
-  create(id: number, firstname: string, lastname: string, age: number, depo: number): Personal[] {    
+  create(id: number, firstname: string, lastname: string, age: number, depo: number): Personal[] {
      PERSONALS.push({
           id:PERSONALS.length,
           firstname: firstname,
           lastname: lastname,
-          age: age, 
+          age: age,
           depo: depo
-     }) 
+     })
      return PERSONALS;
   };
 
 
-//   delete(idd: number): Departament[] {
-//       console.log(idd);
-//      DEPARTAMENTS.filter(function(asd, inde) {
-//      if (asd.id === idd) {
-//          DEPARTAMENTS.splice(inde, 1);
-//      }
-//      });    
-//      return DEPARTAMENTS;
-//   };
+  delete(idd: number): Personal[] {
+    console.log(idd);
+    PERSONALS.filter(function(asd, inde) {
+      if (asd.id === idd) {
+        PERSONALS.splice(inde, 1);
+      }
+    });
+    return PERSONALS;
+  };
 
-  // See the "Take it slow" appendix
- 
 }
 
 

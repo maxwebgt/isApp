@@ -21,65 +21,33 @@ export class PersonalsComponent implements OnInit {
   stuffes: any[];
   constructor(private depService: DepService, private persService: PersService) {
 
-    //  this.stuffes = [
-    //    {
-    //       id:0,
-    //       firstname:"mark",
-    //       lastname:"sanich",
-    //       age:31,
-    //       department:"CEO"
-    //    },
-    //    {
-    //       id:1,
-    //       firstname:"Yuriy",
-    //       lastname:"Birukov",
-    //       age:12,
-    //       department:"sales"
-    //    }
-       
-    // ]
+
   }
   getDep(): void {
-    // this.depService.getDep().then(departaments => this.departaments = departaments);
     this.departaments = this.depService.getDep();
-    
   }
 
   getPers(): void {
-    // this.depService.getDep().then(departaments => this.departaments = departaments);
     this.personals = this.persService.getPers();
-    
-  }
 
+  }
 
   getDepName(id:number) {
     console.log(this.departaments[id].name);
-
-
     return this.departaments[id].name
-    // return 'lolka';
   }
 
   addStuff(firstname:string,lastname:string,age:number,department:number){
-
-     console.log(arguments);
-      this.personals.push({id:this.personals.length,firstname:firstname,lastname:lastname,age:age,depo:department});
-      console.log(this.personals);
+    console.log(arguments);
+    this.personals.push({id:this.personals.length,firstname:firstname,lastname:lastname,age:age,depo:department});
+    console.log(this.personals);
    }
 
 
-  // delStuff(id:number) {
-  //   console.log(id);
-  //   this.stuffes.splice(id, 1);
-  // }
-
-  //  addStuff(firstname:string,lastname:string,age:number,department:string){
-
-  //    console.log(arguments);
-  //     // this.stuffes.push({id:this.stuffes.length,firstname:firstname,lastname:lastname,age:age,department:department});
-  //     console.log(this.stuffes);
-  //  }
-
+  delStuff(id:number) {
+    console.log(id);
+    this.personals = this.persService.delete(id);
+  }
 
   ngOnInit(): void {
     this.getDep();
