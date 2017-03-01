@@ -2,7 +2,7 @@
 		<div class="ui raised segment">
 			<div class="ui middle aligned divided selection list">
 				
-				<div class="item" *ngFor="let stuff of stuffes">
+				<div class="item" *ngFor="let stuff of personals">
 					<div class="right floated content">
 						<button class="ui blue icon button" type="button">
 							<i class="edit outline icon"></i>
@@ -14,7 +14,7 @@
 					<div class="content">
 						<div class="header">
 							{{ stuff.firstname }} {{ stuff.lastname }} Age: {{ stuff.age }}
-						</div>{{ stuff.department }}
+						</div> <span *ngIf="stuff.depo">{{ getDepName(stuff.depo) }}</span> 
 					</div>
 				</div>
 				
@@ -45,11 +45,12 @@
 			  </div>
 			  <div class="field" *ngIf="departaments.length">
 				<label>State</label>
-					<select class="ui fluid dropdown" (change)="ziga(department.value)" #department>
-							<option *ngFor="let department of departaments" value="{{department.name}}">{{department.name}}</option>
+					<select class="ui fluid dropdown" name="depoo" [(ngModel)]="selectedHero">
+							<option [ngValue]="department.id" *ngFor="let department of departaments" value="{{department.id}}">{{department.name}}</option>
 					</select>
 				</div>
-			  <button class="ui button" type="submit" (click)="addStuff(firstname.value,lastname.value,age.value,department.value)">Submit</button>
+			  <button class="ui button" type="submit" (click)="addStuff(firstname.value,lastname.value,age.value,selectedHero)">Submit</button>
+				
 			</form>
 		</div>
 	</div>

@@ -21,10 +21,10 @@ export class DepService {
   delete(idd: number): Departament[] {
       console.log(idd);
      DEPARTAMENTS.filter(function(asd, inde) {
-     if (asd.id === idd) {
-         DEPARTAMENTS.splice(inde, 1);
-     }
-     });
+        if (asd.id === idd) {
+            DEPARTAMENTS.splice(inde, 1);
+        }
+     });    
     //  DEPARTAMENTS.splice(idd, 1);
      return DEPARTAMENTS;
   };

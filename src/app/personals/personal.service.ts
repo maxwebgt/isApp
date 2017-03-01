@@ -10,10 +10,40 @@ export class PersService {
       
     return PERSONALS;
   };
-  
-  create(id: number, firstname: string, lastname: string, age: number, depo: number): Personal[] {
-    
-     PERSONALS.push({id:PERSONALS.length, firstname: firstname, lastname: lastname,age: age, depo: depo}) 
+
+  // updPers(id: number, firstname: string, lastname: string, age: number, depo: number): Personal[] {
+  //   PERSONALS.filter(function(element){
+  //     if (element.id === id )
+  //     {
+  //       element.firstname = firstname;
+  //       element.lastname = lastname;
+  //       element.age = age;
+  //       element.depo = depo;
+  //     }
+
+  //   });
+  //   return PERSONALS;
+  // } ; 
+
+updPersDepoAll(oldid: number, newid: number) {
+  PERSONALS.filter(function(element) {
+    if (element.depo === oldid) {
+      element.depo = newid;
+    }
+  })
+
+  return PERSONALS;
+}
+
+
+  create(id: number, firstname: string, lastname: string, age: number, depo: number): Personal[] {    
+     PERSONALS.push({
+          id:PERSONALS.length,
+          firstname: firstname,
+          lastname: lastname,
+          age: age, 
+          depo: depo
+     }) 
      return PERSONALS;
   };
 

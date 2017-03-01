@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Departament } from './departments';
 import { DepService } from './departments.service';
 
+import { Personal } from '../personals/personal';
+import { PersService } from '../personals/personal.service';
+
 @Component({
   selector: 'app-departments',
   templateUrl: './departments.component.html',
@@ -12,13 +15,19 @@ import { DepService } from './departments.service';
 export class DepartmentsComponent implements OnInit {
 
   departaments: Departament[];  
+  personals: Personal[];
   editid: number;
   editname: string;
-  constructor(private depService: DepService) { }
+  constructor(private depService: DepService, private persService: PersService) { }
 
   getDep(): void {
     // this.depService.getDep().then(departaments => this.departaments = departaments);
     this.departaments = this.depService.getDep();
+    
+  }
+   getPers(): void {
+    // this.depService.getDep().then(departaments => this.departaments = departaments);
+    this.personals = this.persService.getPers();
     
   }
 
@@ -30,6 +39,12 @@ export class DepartmentsComponent implements OnInit {
 
   delDep(id: number): void {
      this.departaments = this.depService.delete(id);
+     this.personals = this.persService.updPersDepoAll(id, 0);
+    //  this.personals.filter(function(element) {
+
+
+    // })
+     console.log();
   }
   editDep(id: number, name: string) {
     if (id < 0 ) {
@@ -44,7 +59,8 @@ export class DepartmentsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getDep();
+       this.getDep();
+      this.getPers();
   }
 
 }
